@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM "http://xml.resource.org/authoring/rfc2629.dtd"
+[
+<!ENTITY RFC7159 PUBLIC ''
+   'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7159.xml'>
+<!ENTITY RFC7480 PUBLIC ''
+   'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7480.xml'>
+<!ENTITY RFC7482 PUBLIC ''
+   'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7482.xml'>
+<!ENTITY RFC7483 PUBLIC ''
+   'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7483.xml'>
+]>
+<?rfc toc="yes"?>
+<rfc category="info" docName="draft-newton-regext-rdap-originas-00" ipr="trust200902">
+    <front>
+        <title abbrev="RDAP Origina AS">Expressing Registry Origin AS Information in RDAP</title>
+        <author fullname="Andrew Lee Newton" initials="A.L." surname="Newton">
+            <organization abbrev="ARIN">American Registry for Internet Numbers</organization>
+            <address>
+                <postal>
+                    <street>PO Box 232290</street>
+                    <city>Centerville</city>
+                    <region>VA</region>
+                    <country>US</country>
+                    <code>20120</code>
+                </postal>
+                <email>andy@arin.net</email>
+                <uri>http://www.arin.net</uri>
+            </address>
+        </author>
+        <date/>
+        <abstract>
+            <t>
+		This document describes an extension to RDAP to query and express origin autonomous system numbers
+                placed on network registrations.
+            </t>
+        </abstract>
+    </front>
+    <middle>
+        <section title="Introduction">
+            <t>
+                The American Registry for Internet Numbers (ARIN) accepts a list of Autonomous System (AS) numbers as
+                an attribute of network objects when they are registered. The intent of these AS numbers is to signify
+                an AS originating a route for the network. This document specifies an extension
+                to express this information in <xref target="RFC7483">RDAP</xref> network objects and a method to query RDAP network objects
+                registered with these AS numbers.
+            </t>
+        </section>
+        <section title="RDAP Extension Identifier">
+            <t>
+                This document uses the RDAP extension identifier "arin_originas0" in accordance with Section 5 of
+                <xref target="RFC7482"></xref> and Section 2.1 of <xref target="RFC7483"></xref>. The registration for the
+                identifier can be found in <xref target="iana-considerations"></xref> in accordance with Section 8.1 of
+                <xref target="RFC7480"></xref>.
+            </t>
+        </section>
+        <section title="Networks By Origin AS Query" anchor="networks-by-originas-query">
+            <t>
+                While RDAP has defined queries to retreive networks and autonomous system numbers by their identifiers,
+                the base RDAP specification does not contain a query to retreive a set of network objects for which an AS
+                number has been associated as an origination in network routing.        
+            </t>
+            <t>
+                This extension defines a query to retreive a set of network objects given an AS number, where the AS number
+                has been registered as originating a route (i.e. origin AS). This query has the following syntax:
+                <list symbol="none">
+                  <li>arin_originas0_networksbyoriginas/&lt;autonomous system number&gt;</li>
+                </list>
+            </t>
+            <t>
+                An example would be:
+                <list symbol="none">
+                  <li>http://example.com/arin_originas0_networksbyoriginas/65538</li>
+                </list>
+            </t>
+            <t>
+                The expected result from the query is defined in <xref target="networks-originas-in-rdap"></xref>.
+            </t>
+        <section>
+        <section title="Networks and Orgin AS Information in RDAP" anchor="networks-originas-in-rdap">
+            <t>
+                This extension defines two new JSON data structures for RDAP. The first is an array of networks (similar to
+                the arrays found in Section 8 of <xref target="RFC7483"></xref>, and the second is an array of origin AS
+                numbers to be placed in network objects.
+            </t>
+            <section title="Network Search Results" anchor="network-search-results">
+                <t>
+                    The set of networks returned by the query in <xref target="networks-by-originas-query"></xref> is
+                    represented by an array named "arin_originas0_networkSearchResults". Each item of the array is to be
+                    an IP network as defined by Section 5.4 of <xref target="RFC7483"></xref>.
+                </t>
+            </section>
+            <section title="Origin AS Numbers" anchor="origin-as-numbers">
+                <t>
+                    Each IP network defined in Section 5.4 of <xref target="RFC7483"></xref> may contain an array named
+                    "arin_originas0_originautnums". This array contains number reprensenting an Autonomous System (AS).
+                    The array may be empty, but if allowed by policy should always be present in both the result of query specified in
+                    <xref target="networks-by-originas-query"></xref> and any other RDAP query where an IP network object
+                    is given.
+                </t>
+            </section>
+            <section title="Example Result" anchor="example-result">
+                <figure align="center" title="Elided IP Network Example" anchor="elided-net-example.json">
+                    <preamble>The following is an elided example of the "networks" array in an IP network object class.</preamble>
+                    <artwork xml:space="preserve" align="center">
+{
+  "rdapConformance" : [ "rdap_level_0", "arin_originas0" ],
+  "arin_originas0_networkSearchResults" : [
+    {
+      "objectClassName" : "ip network",
+      "handle" : "XXXX-2",
+      "startAddress" : "2001:db8::",
+      "endAddress" : "2001:db8:0::ffff",
+      "ipVersion" : "v6",
+      "arin_originas0_originautnums" : [
+        12,
+        65538
+      ],
+      ...
+    },
+     ...
+
+  ]
+}
+                    </artwork>
+                </figure>
+            </section>
+        </section>
+        <section title="IANA Considerations" anchor="iana-considerations">
+            <t>
+              The information below will be registered
+              with the IANA according to the section 8.1 of <xref target="RFC7480">RFC 7480</xref>.
+              <list symbol="none">
+                <li>
+                    Extension identifier: arin_originas0
+                </li>
+                <li>
+                    Registry operator: American Registry for Internet Numbers
+                </li>
+                <li>
+                    Published specification: this document
+                </li>
+                <li>
+                    Person &amp; email address to contact for further information: andy@arin.net
+                </li>
+                <li>
+                    Intended usage: common.
+                </li>
+              </list>
+            </t>
+        </section>
+    </middle>
+    <back>
+        <references title="Normative References">
+            
+            &RFC7159;
+            &RFC7480;
+            &RFC7482;
+            &RFC7483;
+
+        </references>
+    </back>
+</rfc>
