@@ -4,8 +4,8 @@
 
 Network Working Group                                          A. Newton
 Internet-Draft                                                      ARIN
-Intended status: Informational                          January 12, 2018
-Expires: July 16, 2018
+Intended status: Informational                          January 16, 2018
+Expires: July 20, 2018
 
 
            Expressing Registry Origin AS Information in RDAP
@@ -31,7 +31,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on July 16, 2018.
+   This Internet-Draft will expire on July 20, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Newton                    Expires July 16, 2018                 [Page 1]
+Newton                    Expires July 20, 2018                 [Page 1]
 
 Internet-Draft               RDAP Origina AS                January 2018
 
@@ -73,13 +73,13 @@ Table of Contents
 
 1.  Introduction
 
-   The American Registry for Internet Numbers (ARIN) accepts a list of
-   Autonomous System (AS) numbers as an attribute of network objects
-   when they are registered.  The intent of these AS numbers is to
-   signify an AS originating a route for the network.  This document
-   specifies an extension to express this information in RDAP [4]
-   network objects and a method to query RDAP network objects registered
-   with these AS numbers.
+   Since 2007, The American Registry for Internet Numbers (ARIN) has
+   accepted a list of Autonomous System (AS) numbers as an attribute of
+   network objects when they are registered.  The intent of these AS
+   numbers is to signify an AS originating a route for the network.
+   This document specifies an extension to express this information in
+   RDAP [4] network objects and a method to query RDAP network objects
+   registered with these AS numbers.
 
 2.  RDAP Extension Identifier
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Newton                    Expires July 16, 2018                 [Page 2]
+Newton                    Expires July 20, 2018                 [Page 2]
 
 Internet-Draft               RDAP Origina AS                January 2018
 
@@ -165,7 +165,7 @@ $origin_autnums = "arin_originas0_originautnums" : [ integer * ]
 
 
 
-Newton                    Expires July 16, 2018                 [Page 3]
+Newton                    Expires July 20, 2018                 [Page 3]
 
 Internet-Draft               RDAP Origina AS                January 2018
 
@@ -221,7 +221,7 @@ Internet-Draft               RDAP Origina AS                January 2018
 
 
 
-Newton                    Expires July 16, 2018                 [Page 4]
+Newton                    Expires July 20, 2018                 [Page 4]
 
 Internet-Draft               RDAP Origina AS                January 2018
 
@@ -277,4 +277,4 @@ Author's Address
 
 
 
-Newton                    Expires July 16, 2018                 [Page 5]
+Newton                    Expires July 20, 2018                 [Page 5]

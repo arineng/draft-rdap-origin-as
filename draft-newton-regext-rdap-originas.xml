@@ -44,7 +44,7 @@
     <middle>
         <section title="Introduction">
             <t>
-                The American Registry for Internet Numbers (ARIN) accepts a list of Autonomous System (AS) numbers as
+                Since 2007, The American Registry for Internet Numbers (ARIN) has accepted a list of Autonomous System (AS) numbers as
                 an attribute of network objects when they are registered. The intent of these AS numbers is to signify
                 an AS originating a route for the network. This document specifies an extension
                 to express this information in <xref target="RFC7483">RDAP</xref> network objects and a method to query RDAP network objects
