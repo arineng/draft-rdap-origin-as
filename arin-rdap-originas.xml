@@ -16,7 +16,8 @@
 ]>
 <?rfc toc="yes"?>
 <?rfc symrefs="no"?>
-<rfc category="info" docName="draft-newton-regext-rdap-originas-00" ipr="trust200902">
+<?rfc private="yes"?>
+<rfc category="info" docName="arin-rdap-originas-00">
     <front>
         <title abbrev="RDAP Origina AS">Expressing Registry Origin AS Information in RDAP</title>
         <author fullname="Andrew Lee Newton" initials="A.L." surname="Newton">
@@ -73,7 +74,7 @@
             <t>
                 An example would be:
             </t>
-            <t>http://example.com/arin_originas0_networksbyoriginas/65538</t>
+            <t>https://rdap.arin.net/registry/arin_originas0_networksbyoriginas/65538</t>
             <t>
                 The expected result from the query is defined in <xref target="networks-originas-in-rdap"></xref>.
             </t>
