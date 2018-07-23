@@ -8,7 +8,7 @@
 
 
            Expressing Registry Origin AS Information in RDAP
-                         arin-rdap-originas-00
+                           arin-rdap-originas
 
 Abstract
 
@@ -55,7 +55,7 @@ Table of Contents
 
 Newton                  Expires January 24, 2019                [Page 1]
 
-                             RDAP Origina AS                   July 2018
+                             RDAP Origin AS                    July 2018
 
 
    not contain a query to retreive a set of network objects for which an
@@ -111,7 +111,7 @@ $origin_autnums = "arin_originas0_originautnums" : [ integer * ]
 
 Newton                  Expires January 24, 2019                [Page 2]
 
-                             RDAP Origina AS                   July 2018
+                             RDAP Origin AS                    July 2018
 
 
 4.2.  Origin AS Numbers
@@ -167,7 +167,7 @@ Newton                  Expires January 24, 2019                [Page 2]
 
 Newton                  Expires January 24, 2019                [Page 3]
 
-                             RDAP Origina AS                   July 2018
+                             RDAP Origin AS                    July 2018
 
 
    Person & email address to contact for further information:

@@ -3,7 +3,7 @@
 | | July 23, 2018 |
 
 Expressing Registry Origin AS Information in RDAP  
-arin-rdap-originas-00
+arin-rdap-originas
 
 # Abstract
 
